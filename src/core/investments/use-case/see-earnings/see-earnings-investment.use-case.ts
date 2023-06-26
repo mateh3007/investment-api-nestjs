@@ -1,5 +1,5 @@
-import { IInvestmentRepository } from "../../entity/investment.irepository";
-import { alphaVantage } from "../../../../infra/external-requests/alpha-vantage/alpha-vantage.request";
+import { IInvestmentRepository } from '../../entity/investment.irepository';
+import { alphaVantage } from '../../../../infra/external-requests/alpha-vantage/alpha-vantage.request';
 export class SeeEarningsInvestmentUseCase {
   constructor(private readonly repository: IInvestmentRepository) {}
   async handle() {
@@ -11,7 +11,7 @@ export class SeeEarningsInvestmentUseCase {
           ...item,
           closeValue: res,
         };
-      })
+      }),
     );
 
     const updatedInvestmentList = Promise.all(
@@ -23,7 +23,7 @@ export class SeeEarningsInvestmentUseCase {
           ...item,
           totalEarnings: item.totalEarnings,
         };
-      })
+      }),
     );
 
     return updatedInvestmentList;

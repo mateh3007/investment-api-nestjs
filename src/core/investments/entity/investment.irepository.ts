@@ -1,19 +1,18 @@
-import { CreateInvestmentDtoOutput } from "../dto/create-investment.dto";
-import { getAllInvestmentsDtoOutput } from "../dto/get-all-investments.dto";
+import { getAllInvestmentsDtoOutput } from '../dto/get-all-investments.dto';
 import {
   getOneInvestmentDtoInput,
   getOneInvestmentDtoOutput,
-} from "../dto/get-one-investment.dto";
+} from '../dto/get-one-investment.dto';
 import {
   updateInvestmentDtoInput,
   updateInvestmentDtoOutput,
-} from "../dto/update-investment.dto";
-import { InvestmentEntity, investmentProps } from "./investment.entity";
+} from '../dto/update-investment.dto';
+import { InvestmentEntity } from './investment.entity';
 
 export interface IInvestmentRepository {
   create(data: InvestmentEntity): Promise<void>;
   getOne(
-    data: getOneInvestmentDtoInput
+    data: getOneInvestmentDtoInput,
   ): Promise<getOneInvestmentDtoOutput | null>;
   update(data: updateInvestmentDtoInput): Promise<updateInvestmentDtoOutput>;
   getAll(): Promise<getAllInvestmentsDtoOutput[]>;

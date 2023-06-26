@@ -1,15 +1,15 @@
-import axios from "axios";
+import axios from 'axios';
 
 export async function alphaVantage(
   payload: string,
-  dataPosition: number = -1
+  dataPosition = -1,
 ): Promise<any> {
   try {
     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${payload}.SA&apikey=QUDT2RRX5P8KO4ZZ`;
     const req = await axios.get(url);
 
     if (req === undefined) {
-      throw new Error("FII not founded");
+      throw new Error('FII not founded');
     }
 
     const reqData = req.data;

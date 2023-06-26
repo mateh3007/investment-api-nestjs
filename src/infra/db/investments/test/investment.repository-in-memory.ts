@@ -1,20 +1,19 @@
-import { CreateInvestmentDtoOutput } from "../../../../core/investments/dto/create-investment.dto";
-import { getAllInvestmentsDtoOutput } from "../../../../core/investments/dto/get-all-investments.dto";
+import { getAllInvestmentsDtoOutput } from '../../../../core/investments/dto/get-all-investments.dto';
 import {
   getOneInvestmentDtoInput,
   getOneInvestmentDtoOutput,
-} from "../../../../core/investments/dto/get-one-investment.dto";
+} from '../../../../core/investments/dto/get-one-investment.dto';
 import {
   updateInvestmentDtoInput,
   updateInvestmentDtoOutput,
-} from "../../../../core/investments/dto/update-investment.dto";
-import { InvestmentEntity } from "../../../../core/investments/entity/investment.entity";
-import { IInvestmentRepository } from "../../../../core/investments/entity/investment.irepository";
-import { prisma } from "../../ORM/prisma/prisma";
+} from '../../../../core/investments/dto/update-investment.dto';
+import { InvestmentEntity } from '../../../../core/investments/entity/investment.entity';
+import { IInvestmentRepository } from '../../../../core/investments/entity/investment.irepository';
+import { prisma } from '../../ORM/prisma/prisma';
 
 export class InvestmentRepositoryInMemory implements IInvestmentRepository {
   async create(data: InvestmentEntity): Promise<void> {
-    const output = await prisma.investment.create({
+    await prisma.investment.create({
       data: {
         ...data,
         totalEarnings: undefined,
@@ -23,7 +22,7 @@ export class InvestmentRepositoryInMemory implements IInvestmentRepository {
     });
   }
   async getOne(
-    data: getOneInvestmentDtoInput
+    data: getOneInvestmentDtoInput,
   ): Promise<getOneInvestmentDtoOutput | null> {
     const investment = await prisma.investment.findUnique({
       where: {
@@ -32,7 +31,7 @@ export class InvestmentRepositoryInMemory implements IInvestmentRepository {
     });
 
     if (!investment) {
-      throw new Error("Investment not created");
+      throw new Error('Investment not created');
     }
 
     return {
@@ -44,7 +43,7 @@ export class InvestmentRepositoryInMemory implements IInvestmentRepository {
   }
 
   async update(
-    data: updateInvestmentDtoInput
+    data: updateInvestmentDtoInput,
   ): Promise<updateInvestmentDtoOutput> {
     const investment = await prisma.investment.update({
       where: {

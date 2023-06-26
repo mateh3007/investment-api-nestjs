@@ -1,5 +1,5 @@
-import { Router } from "express";
-import investmentRouter from "./investment/main";
+import { Router } from 'express';
+import investmentRouter from './investment/main';
 
 const router = Router();
 
