@@ -1,3 +1,4 @@
+import { BadRequestException } from '@nestjs/common';
 import axios from 'axios';
 
 export async function alphaVantage(
@@ -8,13 +9,14 @@ export async function alphaVantage(
     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${payload}.SA&apikey=QUDT2RRX5P8KO4ZZ`;
     const req = await axios.get(url);
 
-    if (req === undefined) {
-      throw new Error('FII not founded');
-    }
-
     const reqData = req.data;
+
     const timeSeries = Object.keys(reqData)[1];
     const timeSeriesData = reqData[timeSeries];
+
+    if (!timeSeriesData) {
+      throw new BadRequestException('FII not exists').message;
+    }
 
     const mostRecentValue = Object.keys(timeSeriesData)[0];
     const mostRecentValueData = timeSeriesData[mostRecentValue];

@@ -12,7 +12,8 @@ describe('Investment entity', () => {
     console.log(investment);
     expect(investment).toEqual({
       ...investmentProps,
-      finalValue: 20,
+      totalExpenses: 20,
+      totalEarnings: 0,
     });
   });
 
@@ -24,7 +25,8 @@ describe('Investment entity', () => {
       FII: 'AAAA',
       initialValue: 10,
       numberOfShares: 3,
-      finalValue: 30,
+      totalExpenses: 30,
+      totalEarnings: 0,
     });
   });
 
@@ -36,7 +38,8 @@ describe('Investment entity', () => {
       FII: 'AAAA',
       initialValue: 30,
       numberOfShares: 2,
-      finalValue: 60,
+      totalExpenses: 60,
+      totalEarnings: 0,
     });
   });
 });

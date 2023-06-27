@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { SeeEarningsService } from './see-earnings.service';
+import { SeeEarningsInvestmentUseCase } from 'src/core/investments/use-case/see-earnings/see-earnings-investment.use-case';
 
 @Controller('see-earnings')
 export class SeeEarningsController {
-  constructor(private readonly service: SeeEarningsService) {}
+  constructor(private readonly useCase: SeeEarningsInvestmentUseCase) {}
 
   @Get()
   async handle() {
-    return await this.service.handle();
+    return await this.useCase.handle();
   }
 }

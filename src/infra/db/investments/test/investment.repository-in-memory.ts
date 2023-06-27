@@ -1,8 +1,5 @@
 import { getAllInvestmentsDtoOutput } from '../../../../core/investments/dto/get-all-investments.dto';
-import {
-  getOneInvestmentDtoInput,
-  getOneInvestmentDtoOutput,
-} from '../../../../core/investments/dto/get-one-investment.dto';
+import { getOneInvestmentDtoOutput } from '../../../../core/investments/dto/get-one-investment.dto';
 import {
   updateInvestmentDtoInput,
   updateInvestmentDtoOutput,
@@ -21,25 +18,14 @@ export class InvestmentRepositoryInMemory implements IInvestmentRepository {
       },
     });
   }
-  async getOne(
-    data: getOneInvestmentDtoInput,
-  ): Promise<getOneInvestmentDtoOutput | null> {
+  async getOne(data: string): Promise<getOneInvestmentDtoOutput | null> {
     const investment = await prisma.investment.findUnique({
       where: {
-        FII: data.FII,
+        FII: data,
       },
     });
 
-    if (!investment) {
-      throw new Error('Investment not created');
-    }
-
-    return {
-      ...investment,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      deletedAt: null,
-    };
+    return investment;
   }
 
   async update(

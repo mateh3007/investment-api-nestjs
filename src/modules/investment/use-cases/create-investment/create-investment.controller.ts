@@ -12,6 +12,6 @@ export class CreateInvestmentController {
   async handle(
     @Body() data: CreateInvestmentDtoInput,
   ): Promise<CreateInvestmentDtoOutput> {
-    return await this.useCase.handle(data);
+    return this.useCase.handle(data);
   }
 }

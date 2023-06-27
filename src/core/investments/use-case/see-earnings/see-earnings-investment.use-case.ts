@@ -1,5 +1,8 @@
 import { IInvestmentRepository } from '../../entity/investment.irepository';
 import { alphaVantage } from '../../../../infra/external-requests/alpha-vantage/alpha-vantage.request';
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
 export class SeeEarningsInvestmentUseCase {
   constructor(private readonly repository: IInvestmentRepository) {}
   async handle() {
@@ -13,19 +16,16 @@ export class SeeEarningsInvestmentUseCase {
         };
       }),
     );
-
-    const updatedInvestmentList = Promise.all(
+    const updatedInvestmentList = await Promise.all(
       investmentFIIList.map((item) => {
         const closeValueExpression = item.closeValue * item.numberOfShares;
-        item.totalEarnings = item.totalExpenses - closeValueExpression;
-
+        item.totalEarnings = closeValueExpression - item.totalExpenses;
         return {
           ...item,
           totalEarnings: item.totalEarnings,
         };
       }),
     );
-
     return updatedInvestmentList;
   }
 }

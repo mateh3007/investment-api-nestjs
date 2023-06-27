@@ -9,7 +9,9 @@ describe('CreateInvestmentController', () => {
       controllers: [CreateInvestmentController],
     }).compile();
 
-    controller = module.get<CreateInvestmentController>(CreateInvestmentController);
+    controller = module.get<CreateInvestmentController>(
+      CreateInvestmentController,
+    );
   });
 
   it('should be defined', () => {
