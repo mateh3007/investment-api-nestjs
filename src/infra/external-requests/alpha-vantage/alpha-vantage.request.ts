@@ -1,10 +1,13 @@
-import { BadRequestException } from '@nestjs/common';
+import {
+  BadRequestException,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import axios from 'axios';
 
 export async function alphaVantage(
   payload: string,
   dataPosition = -1,
-): Promise<any> {
+): Promise<{ updatedAt: string; currentPrice: number }> {
   try {
     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${payload}.SA&apikey=QUDT2RRX5P8KO4ZZ`;
     const req = await axios.get(url);
@@ -28,8 +31,12 @@ export async function alphaVantage(
     }
 
     const selectedValueData = mostRecentValueData[selectedValue];
-    return parseFloat(selectedValueData || 0);
+
+    return {
+      updatedAt: mostRecentValue,
+      currentPrice: parseFloat(selectedValueData || 0),
+    };
   } catch (err) {
-    console.error(err);
+    throw new InternalServerErrorException(`${err}: ${payload}`);
   }
 }
