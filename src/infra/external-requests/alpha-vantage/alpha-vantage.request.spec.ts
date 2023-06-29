@@ -2,7 +2,8 @@ import { alphaVantage } from './alpha-vantage.request';
 
 describe('Alpha vantage request', () => {
   it('Should able return something', async () => {
-    const req = await alphaVantage('AIEC11');
+    const req = await alphaVantage('VALE3');
+    console.log(req);
     expect(req).toBeTruthy();
   });
 

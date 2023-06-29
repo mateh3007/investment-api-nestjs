@@ -8,7 +8,7 @@ export const investments = [
     totalCapitalGain: 0,
     shares: [
       {
-        symbol: 'BBAS3.SA',
+        symbol: 'BBAS3',
         updatedAt: '',
         totalQuotas: 17,
         openingPrice: 48.32,
@@ -29,7 +29,7 @@ export const investments = [
     totalCapitalGain: 0,
     shares: [
       {
-        symbol: 'CPTS11.SA',
+        symbol: 'CPTS11',
         updatedAt: '',
         totalQuotas: 56,
         openingPrice: 76.5,
@@ -40,7 +40,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'CVBI11.SA',
+        symbol: 'CVBI11',
         updatedAt: '',
         totalQuotas: 49,
         openingPrice: 88.42,
@@ -51,7 +51,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'KNCR11.SA',
+        symbol: 'KNCR11',
         updatedAt: '',
         totalQuotas: 23,
         openingPrice: 95.44,
@@ -62,7 +62,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'PORD11.SA',
+        symbol: 'PORD11',
         updatedAt: '',
         totalQuotas: 66,
         openingPrice: 83.93,
@@ -73,7 +73,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'PVBI11.SA',
+        symbol: 'PVBI11',
         updatedAt: '',
         totalQuotas: 43,
         openingPrice: 94.3,
@@ -84,7 +84,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'AIEC11.SA',
+        symbol: 'AIEC11',
         updatedAt: '',
         totalQuotas: 61,
         openingPrice: 60.04,
@@ -95,7 +95,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'BRCR11.SA',
+        symbol: 'BRCR11',
         updatedAt: '',
         totalQuotas: 42,
         openingPrice: 57.75,
@@ -106,7 +106,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'JSRE11.SA',
+        symbol: 'JSRE11',
         updatedAt: '',
         totalQuotas: 35,
         openingPrice: 70.5,
@@ -117,7 +117,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'HGRU11.SA',
+        symbol: 'HGRU11',
         updatedAt: '',
         totalQuotas: 50,
         openingPrice: 122.96,
@@ -128,7 +128,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'HGLG11.SA',
+        symbol: 'HGLG11',
         updatedAt: '',
         totalQuotas: 17,
         openingPrice: 163.41,
@@ -138,19 +138,19 @@ export const investments = [
         currentPosition: 0,
         capitalGain: 0,
       },
+      // {
+      //   symbol: 'HGLG13',
+      //   updatedAt: '',
+      //   totalQuotas: 7,
+      //   openingPrice: 155.7,
+      //   currentPrice: 0,
+      //   profitability: 0,
+      //   openingPosition: 0,
+      //   currentPosition: 0,
+      //   capitalGain: 0,
+      // },
       {
-        symbol: 'HGLG13.SA',
-        updatedAt: '',
-        totalQuotas: 7,
-        openingPrice: 155.7,
-        currentPrice: 0,
-        profitability: 0,
-        openingPosition: 0,
-        currentPosition: 0,
-        capitalGain: 0,
-      },
-      {
-        symbol: 'HGLG11.SA',
+        symbol: 'HGLG11',
         updatedAt: '',
         totalQuotas: 15,
         openingPrice: 155.7,
@@ -161,7 +161,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'LVBI11.SA',
+        symbol: 'LVBI11',
         updatedAt: '',
         totalQuotas: 29,
         openingPrice: 106.91,
@@ -172,7 +172,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'BRCO11.SA',
+        symbol: 'BRCO11',
         updatedAt: '',
         totalQuotas: 30,
         openingPrice: 102.29,
@@ -183,7 +183,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'PATL11.SA',
+        symbol: 'PATL11',
         updatedAt: '',
         totalQuotas: 40,
         openingPrice: 62.55,
@@ -194,7 +194,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'RBRF11.SA',
+        symbol: 'RBRF11',
         updatedAt: '',
         totalQuotas: 53,
         openingPrice: 70.2,
@@ -205,7 +205,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'BCIA11.SA',
+        symbol: 'BCIA11',
         updatedAt: '',
         totalQuotas: 36,
         openingPrice: 86.55,
@@ -216,7 +216,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'KFOF11.SA',
+        symbol: 'KFOF11',
         updatedAt: '',
         totalQuotas: 30,
         openingPrice: 82.14,
@@ -227,7 +227,7 @@ export const investments = [
         capitalGain: 0,
       },
       {
-        symbol: 'XPML11.SA',
+        symbol: 'XPML11',
         updatedAt: '',
         totalQuotas: 33,
         openingPrice: 101.8,
@@ -237,19 +237,19 @@ export const investments = [
         currentPosition: 0,
         capitalGain: 0,
       },
+      // {
+      //   symbol: 'XPML13',
+      //   updatedAt: '',
+      //   totalQuotas: 4,
+      //   openingPrice: 99.6,
+      //   currentPrice: 0,
+      //   profitability: 0,
+      //   openingPosition: 0,
+      //   currentPosition: 0,
+      //   capitalGain: 0,
+      // },
       {
-        symbol: 'XPML13.SA',
-        updatedAt: '',
-        totalQuotas: 4,
-        openingPrice: 99.6,
-        currentPrice: 0,
-        profitability: 0,
-        openingPosition: 0,
-        currentPosition: 0,
-        capitalGain: 0,
-      },
-      {
-        symbol: 'VISC11.SA',
+        symbol: 'VISC11',
         updatedAt: '',
         totalQuotas: 23,
         openingPrice: 107.16,
