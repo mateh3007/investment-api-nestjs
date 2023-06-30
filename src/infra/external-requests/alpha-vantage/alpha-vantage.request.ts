@@ -1,41 +1,20 @@
-import {
-  BadRequestException,
-  InternalServerErrorException,
-} from '@nestjs/common';
+import { InternalServerErrorException } from '@nestjs/common';
 import axios from 'axios';
 
-export async function alphaVantage(
-  payload: string,
-  dataPosition = -1,
-): Promise<{ updatedAt: string; currentPrice: number }> {
+export async function alphaVantage(payload: string): Promise<any> {
   try {
-    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${payload}.SA&apikey=QUDT2RRX5P8KO4ZZ`;
+    const url = `https://brapi.dev/api/quote/${payload}?range=1d&interval=1d&fundamental=true&dividends=false`;
     const req = await axios.get(url);
+    const reqData = req.data['results'];
 
-    const reqData = req.data;
-
-    const timeSeries = Object.keys(reqData)[1];
-    const timeSeriesData = reqData[timeSeries];
-
-    if (!timeSeriesData) {
-      throw new BadRequestException('FII not exists').message;
-    }
-
-    const mostRecentValue = Object.keys(timeSeriesData)[0];
-    const mostRecentValueData = timeSeriesData[mostRecentValue];
-
-    const selectedValue = Object.keys(mostRecentValueData)[dataPosition];
-
-    if (selectedValue === undefined) {
-      return { ...mostRecentValueData };
-    }
-
-    const selectedValueData = mostRecentValueData[selectedValue];
-
-    return {
-      updatedAt: mostRecentValue,
-      currentPrice: parseFloat(selectedValueData || 0),
-    };
+    return reqData.map((item) => {
+      return {
+        symbol: item.symbol,
+        longName: item.longName,
+        updatedAt: item.regularMarketTime,
+        close: item.historicalDataPrice[0].close,
+      };
+    });
   } catch (err) {
     throw new InternalServerErrorException(`${err}: ${payload}`);
   }
