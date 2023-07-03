@@ -1,4 +1,4 @@
-import {  createShareDtoOutput } from '../dto/create-share.dto';
+import { createShareDtoOutput } from '../dto/create-share.dto';
 import { ShareEntity } from './share.entity';
 import { IUserRepository } from './share.irepository';
 
