@@ -19,14 +19,6 @@ export class SeeEarningsInvestmentUseCase {
 
     return investments.map((category) => {
       const sharesQuantity = category.shares.length;
-      const totalOpeningPosition = category.shares.reduce(
-        (acc, curr) => acc + curr.openingPrice,
-        0,
-      );
-      const totalQuotas = category.shares.reduce(
-        (acc, curr) => acc + curr.totalQuotas,
-        0,
-      );
 
       const shares = category.shares.map((item) => {
         const findShare = res.find((share) => {
@@ -44,90 +36,33 @@ export class SeeEarningsInvestmentUseCase {
           const findShare = res.find((share) => {
             return item.symbol === share.symbol;
           });
-          return findShare.close * totalQuotas;
+          return item.totalQuotas * findShare.close;
         })
         .reduce((acc, curr) => {
           return acc + curr;
         }, 0);
 
-      const totalCapitalGain =
-        totalCurrentPosition - totalOpeningPosition * totalQuotas;
+      const finalOpeningPosition = category.shares
+        .map((item) => {
+          const totalOpeningPosition = item.openingPrice * item.totalQuotas;
 
-      console.log(totalCapitalGain);
+          return totalOpeningPosition;
+        })
+        .reduce((acc, curr) => {
+          return acc + curr;
+        }, 0);
+      console.log(finalOpeningPosition);
+
+      const totalCapitalGain = totalCurrentPosition - finalOpeningPosition;
 
       return {
         ...category,
         sharesQuantity,
-        totalOpeningPosition: totalOpeningPosition * totalQuotas,
+        totalOpeningPosition: finalOpeningPosition,
         totalCurrentPosition,
         totalCapitalGain,
         shares,
       };
     });
-
-    // const investmentFIIList = await Promise.all(
-    //   investments.map(async (item) => {
-    //     return {
-    //       category: item.category,
-    //       label: item.label,
-    //       shares: await Promise.all(
-    //         item.shares.map(async (share) => {
-    //           urlShares += `${share.symbol},`;
-    //           const res = await alphaVantage(urlShares);
-    //           return res;
-    //         }),
-    //       ),
-    //     };
-    //   }),
-    // );
-
-    // const finalData = investmentFIIList.map((item) => {
-    //   const sharesQuantity = item.shares.length;
-    //   const totalOpeningPosition = investments.map((item) => {
-    //     const shares = item.shares.map((item) => {
-    //       return item.openingPrice * item.totalQuotas;
-    //     });
-
-    //     return shares;
-    //   });
-    //   return {
-    //     category: item.category,
-    //     label: item.label,
-    //     sharesQuantity,
-    //     totalOpeningPosition,
-    //   };
-    // });
-
-    // console.log(finalData);
-    // return finalData;
-
-    // return investmentFIIList.map((item) => {
-    //   console.log();
-    //   const sharesQuantity = item.shares.length;
-    //   const totalOpeningPosition = item.shares.reduce(
-    //     (acc, curr) => acc + curr.openingPosition,
-    //     0,
-    //   );
-    //   const totalCurrentPosition = item.shares.reduce(
-    //     (acc, curr) => acc + curr.currentPosition,
-    //     0,
-    //   );
-    //   const totalCapitalGain = item.shares.reduce(
-    //     (acc, curr) => acc + curr.capitalGain,
-    //     0,
-    //   );
-
-    //   return {
-    //     category: item.category,
-    //     label: item.label,
-    //     sharesQuantity,
-    //     totalOpeningPosition,
-    //     totalCurrentPosition,
-    //     totalCapitalGain,
-    //     shares: item.shares,
-    //   };
-    // });
-
-    // return investmentFIIList;
   }
 }
