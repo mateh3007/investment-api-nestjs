@@ -51,7 +51,6 @@ export class SeeEarningsInvestmentUseCase {
         .reduce((acc, curr) => {
           return acc + curr;
         }, 0);
-      console.log(finalOpeningPosition);
 
       const totalCapitalGain = totalCurrentPosition - finalOpeningPosition;
 
