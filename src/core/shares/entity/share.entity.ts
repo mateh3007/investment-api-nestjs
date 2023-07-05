@@ -1,13 +1,13 @@
 export type shareProps = {
-  symbol: string;
-  openingPrice: number;
-  totalQuotas: number;
+  symbol: Required<string>;
+  openingPrice: Required<number>;
+  totalQuotas: Required<number>;
 };
 
 export class ShareEntity {
-  public symbol: string;
-  public openingPrice: number;
-  public totalQuotas: number;
+  public symbol: Required<string>;
+  public openingPrice: Required<number>;
+  public totalQuotas: Required<number>;
   public totalOpeningPosition: number;
 
   constructor(data: shareProps) {
@@ -31,8 +31,13 @@ export class ShareEntity {
     this.totalOpeningPosition = this.openingPrice * this.totalQuotas;
   }
 
-  toJSON(): ShareEntity {
-    return { ...this };
+  toJSON() {
+    return {
+      symbol: this.symbol,
+      openingPrice: this._openingPrice,
+      totalQuotas: this.totalQuotas,
+      totalOpeningPosition: this.totalOpeningPosition,
+    };
   }
 
   get _symbol(): string {

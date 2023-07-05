@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { InvestmentModule } from './modules/investment/investment.module';
+import { ShareModule } from './modules/share/share.module';
 
 @Module({
-  imports: [InvestmentModule],
+  imports: [ShareModule],
   controllers: [],
   providers: [],
 })
