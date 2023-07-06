@@ -2,6 +2,10 @@ import { ShareEntity } from 'src/core/shares/entity/share.entity';
 import { IShareRepository } from 'src/core/shares/entity/share.irepository';
 import { prisma } from '../../ORM/prisma/prisma';
 import { createShareDtoOutput } from 'src/core/shares/dto/create-share.dto';
+import {
+  getShareDtoInput,
+  getShareDtoOutput,
+} from 'src/core/shares/dto/get-share.dto';
 
 export class ShareRepositoryInMemory implements IShareRepository {
   async create(data: ShareEntity): Promise<createShareDtoOutput> {
@@ -15,5 +19,13 @@ export class ShareRepositoryInMemory implements IShareRepository {
       },
     });
     return output;
+  }
+
+  async getOne(data: getShareDtoInput): Promise<getShareDtoOutput> {
+    return await prisma.investment.findUnique({
+      where: {
+        symbol: data.symbol,
+      },
+    });
   }
 }

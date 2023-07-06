@@ -1,21 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { ShareEntity } from '../../entity/share.entity';
-import { IShareRepository } from '../../entity/share.irepository';
+import {
+  getShareDtoInput,
+  getShareDtoOutputUseCase,
+} from '../../dto/get-share.dto';
 import { gateway } from '../../gateway/gateway.interface';
-import { createShareDtoOutputUseCase } from '../../dto/create-share.dto';
+import { IShareRepository } from '../../entity/share.irepository';
 
 @Injectable()
-export class CreateShareUseCase {
+export class GetShareUseCase {
   constructor(private readonly repository: IShareRepository) {}
-  async handle(
-    data: ShareEntity,
-    request: gateway,
-  ): Promise<createShareDtoOutputUseCase> {
-    if (request === undefined) {
-      throw new Error('FII not found or not exists');
-    }
 
-    const output = await this.repository.create(data);
+  async handle(
+    data: getShareDtoInput,
+    request: gateway,
+  ): Promise<getShareDtoOutputUseCase> {
+    const output = await this.repository.getOne(data);
     const requestResult = request[0];
 
     const totalCapitalGain =

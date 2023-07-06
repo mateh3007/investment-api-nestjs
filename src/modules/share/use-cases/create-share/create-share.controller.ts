@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ShareEntity } from 'src/core/shares/entity/share.entity';
 import { CreateShareUseCase } from 'src/core/shares/use-case/create-share/create-share.use-case';
-import { BraipRequest } from 'src/infra/external-requests/alpha-vantage/braip.request';
+import { BraipRequest } from 'src/infra/external-requests/braip/braip.request';
 
 @Controller('create-share')
 export class CreateShareController {

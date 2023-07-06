@@ -1,6 +1,6 @@
 import { InternalServerErrorException } from '@nestjs/common';
 import axios from 'axios';
-import { gateway } from 'src/core/shares/use-case/create-share/gateway/gateway.interface';
+import { gateway } from 'src/core/shares/gateway/gateway.interface';
 
 export class BraipRequest implements gateway {
   async braipRequest(payload: string): Promise<any> {
