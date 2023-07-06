@@ -28,4 +28,8 @@ export class ShareRepositoryInMemory implements IShareRepository {
       },
     });
   }
+
+  async getAll(): Promise<createShareDtoOutput[]> {
+    return await prisma.investment.findMany();
+  }
 }
