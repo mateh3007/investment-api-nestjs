@@ -8,7 +8,9 @@ export class CreateShareController {
   constructor(private readonly useCase: CreateShareUseCase) {}
   @Post()
   async handle(@Body() data: ShareEntity): Promise<any> {
-    // const braipRequest = new BraipRequest();
-    return this.useCase.handle(data);
+    const requestFunction = new BraipRequest();
+    const request = await requestFunction.braipRequest(data.symbol);
+    console.log(request);
+    return this.useCase.handle(data, request);
   }
 }

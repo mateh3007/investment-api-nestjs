@@ -1,8 +1,8 @@
 import { InternalServerErrorException } from '@nestjs/common';
 import axios from 'axios';
-import { IGateway } from 'src/core/shares/use-case/create-share/gateway/gateway.interface';
+import { gateway } from 'src/core/shares/use-case/create-share/gateway/gateway.interface';
 
-export class BraipRequest implements IGateway {
+export class BraipRequest implements gateway {
   async braipRequest(payload: string): Promise<any> {
     try {
       const url = `https://brapi.dev/api/quote/${payload}?range=1d&interval=1d&fundamental=true&dividends=false`;
@@ -11,6 +11,8 @@ export class BraipRequest implements IGateway {
         return new Error('Not found this FII');
       }
       const reqData = req.data['results'];
+
+      // console.log(reqData);
 
       return reqData.map((item) => {
         return {
